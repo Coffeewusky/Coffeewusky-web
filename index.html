@@ -11,11 +11,11 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 150vh;  /* Increased height for scrolling */
       margin: 0;
       background-color: #293247;
       color: white;
-      overflow-y: scroll; /* Allows scrolling */
+      overflow-y: auto; /* Allows scrolling */
     }
     h1 {
       font-size: 3em;
@@ -29,26 +29,40 @@
       font-size: 1.2em;
       display: inline-flex;
       align-items: center;
+      padding: 8px 15px;  /* Adds padding around the text and image */
+      border-radius: 12px;  /* Rounded corners for the link container */
+      transition: background-color 0.3s, color 0.3s;
     }
     .socials a img {
       width: 24px;
       height: 24px;
       margin-right: 8px;
     }
-    .socials a.youtube img {
-      filter: invert(53%) sepia(95%) saturate(2602%) hue-rotate(346deg) brightness(85%) contrast(89%);
+    .socials a .social-text {
+      background-color: rgba(255, 255, 255, 0.8);  /* Semi-transparent background */
+      padding: 5px 10px;
+      border-radius: 8px;  /* Rounded corners for the text background */
+      margin: 0 8px;  /* Space between the icon and the text */
     }
-    .socials a.twitch img {
-      filter: invert(36%) sepia(69%) saturate(4471%) hue-rotate(258deg) brightness(83%) contrast(97%);
+    .socials a.youtube .social-text {
+      color: #d13232;
+      background-color: #fff3f3;
     }
-    .socials a.twitter img {
-      filter: invert(63%) sepia(58%) saturate(4281%) hue-rotate(168deg) brightness(95%) contrast(101%);
+    .socials a.twitch .social-text {
+      color: #8836b9;
+      background-color: #f0e6fc;
     }
-    .socials a.github img {
-      filter: invert(22%) sepia(9%) saturate(0%) hue-rotate(0deg) brightness(102%) contrast(100%);
+    .socials a.twitter .social-text {
+      color: #3dc2e9;
+      background-color: #e6f8ff;
+    }
+    .socials a.github .social-text {
+      color: black;
+      background-color: #f0f0f0;
     }
     .socials a:hover {
-      text-decoration: underline;
+      background-color: #444;  /* Darker background on hover */
+      color: white;  /* White text on hover */
     }
     .attribution {
       position: absolute;
@@ -94,12 +108,8 @@
         img.alt = social.name;
 
         const text = document.createElement("span");
+        text.className = "social-text";
         text.textContent = social.name;
-
-        // If it's GitHub, change the text color to black
-        if (social.class === "github") {
-          text.style.color = "black";
-        }
 
         anchor.appendChild(img);
         anchor.appendChild(text);

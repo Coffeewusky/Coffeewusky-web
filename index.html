@@ -26,15 +26,22 @@
       margin: 0 10px;
       text-decoration: none;
       font-size: 1.2em;
+      display: inline-flex;
+      align-items: center;
     }
-    .socials a.youtube {
-      color: #d13232;
+    .socials a img {
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
     }
-    .socials a.twitch {
-      color: #8836b9;
+    .socials a.youtube img {
+      filter: invert(53%) sepia(95%) saturate(2602%) hue-rotate(346deg) brightness(85%) contrast(89%);
     }
-    .socials a.twitter {
-      color: #3dc2e9;
+    .socials a.twitch img {
+      filter: invert(36%) sepia(69%) saturate(4471%) hue-rotate(258deg) brightness(83%) contrast(97%);
+    }
+    .socials a.twitter img {
+      filter: invert(63%) sepia(58%) saturate(4281%) hue-rotate(168deg) brightness(95%) contrast(101%);
     }
     .socials a:hover {
       text-decoration: underline;
@@ -48,9 +55,9 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const socials = [
-        { name: "YouTube", url: "https://youtube.com/@coffeewusky?si=12ho4uwh6jBDedhZ", class: "youtube" },
-        { name: "Twitch", url: "https://www.twitch.tv/coffeewusky", class: "twitch" },
-        { name: "Twitter", url: "https://x.com/coffeewusky", class: "twitter" }
+        { name: "YouTube", url: "https://youtube.com/@coffeewusky?si=12ho4uwh6jBDedhZ", class: "youtube", img: "images/youtube-icon.png" },
+        { name: "Twitch", url: "https://www.twitch.tv/coffeewusky", class: "twitch", img: "images/twitch-icon.png" },
+        { name: "Twitter", url: "https://x.com/coffeewusky", class: "twitter", img: "images/twitter-icon.png" }
       ];
 
       const socialsContainer = document.getElementById("socials");
@@ -58,9 +65,15 @@
       socials.forEach(social => {
         const anchor = document.createElement("a");
         anchor.href = social.url;
-        anchor.textContent = social.name;
         anchor.className = social.class;
         anchor.target = "_blank";  // Open links in a new tab
+
+        const img = document.createElement("img");
+        img.src = social.img;
+        img.alt = social.name;
+
+        anchor.appendChild(img);
+        anchor.appendChild(document.createTextNode(social.name));
         socialsContainer.appendChild(anchor);
       });
     });

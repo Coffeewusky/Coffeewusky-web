@@ -61,6 +61,12 @@
       background-color: #444;  /* Darker background on hover for the link container */
       color: white;  /* White text on hover */
     }
+    .countdown {
+      font-size: 4em; /* Large font for countdown */
+      font-weight: bold;
+      color: #ffcc00;
+      margin-top: 50px; /* Adds space above the countdown */
+    }
     .attribution {
       position: relative;
       bottom: 0;
@@ -88,6 +94,9 @@
 <body>
   <h1 id="title">Coffeewusky</h1>
   <div class="socials" id="socials"></div>
+
+  <!-- Countdown Timer -->
+  <div class="countdown" id="countdown"></div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -118,6 +127,29 @@
         anchor.appendChild(text);
         socialsContainer.appendChild(anchor);
       });
+
+      // Set the target date for New Year 2025
+      const targetDate = new Date("January 1, 2025 00:00:00").getTime();
+
+      // Update the countdown every 1 second
+      const interval = setInterval(function() {
+        const now = new Date().getTime();
+        const timeLeft = targetDate - now;
+
+        // Calculate hours, minutes, and seconds
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        // Display the countdown
+        if (timeLeft > 0) {
+          document.getElementById("countdown").innerHTML = 
+            `${hours}h ${minutes}m ${seconds}s`;
+        } else {
+          document.getElementById("countdown").innerHTML = "Happy New Year 2025!";
+          clearInterval(interval); // Stop the countdown once it reaches 0
+        }
+      }, 1000);
     });
   </script>
 

@@ -13,11 +13,11 @@
       justify-content: center;
       height: 100vh;
       margin: 0;
-      background-color: #f5f5f5;
+      background-color: #293247;
+      color: white;
     }
     h1 {
       font-size: 3em;
-      color: #333;
     }
     .socials {
       margin-top: 20px;
@@ -25,8 +25,19 @@
     .socials a {
       margin: 0 10px;
       text-decoration: none;
-      color: #1a73e8;
       font-size: 1.2em;
+    }
+    .socials a.youtube {
+      color: #d13232;
+    }
+    .socials a.twitch {
+      color: #8836b9;
+    }
+    .socials a.twitter {
+      color: #3dc2e9;
+    }
+    .socials a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
@@ -37,9 +48,9 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const socials = [
-        { name: "YouTube", url: "https://www.youtube.com/user/yourchannel" },
-        { name: "Twitch", url: "https://www.twitch.tv/yourchannel" },
-        { name: "Twitter", url: "https://twitter.com/yourhandle" }
+        { name: "YouTube", url: "https://youtube.com/@coffeewusky?si=12ho4uwh6jBDedhZ", class: "youtube" },
+        { name: "Twitch", url: "https://www.twitch.tv/coffeewusky", class: "twitch" },
+        { name: "Twitter", url: "https://x.com/coffeewusky", class: "twitter" }
       ];
 
       const socialsContainer = document.getElementById("socials");
@@ -48,6 +59,7 @@
         const anchor = document.createElement("a");
         anchor.href = social.url;
         anchor.textContent = social.name;
+        anchor.className = social.class;
         anchor.target = "_blank";  // Open links in a new tab
         socialsContainer.appendChild(anchor);
       });

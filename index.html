@@ -43,6 +43,9 @@
     .socials a.twitter img {
       filter: invert(63%) sepia(58%) saturate(4281%) hue-rotate(168deg) brightness(95%) contrast(101%);
     }
+    .socials a.github img {
+      filter: invert(22%) sepia(9%) saturate(0%) hue-rotate(0deg) brightness(102%) contrast(100%);
+    }
     .socials a:hover {
       text-decoration: underline;
     }
@@ -55,9 +58,10 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const socials = [
-        { name: "YouTube", url: "https://youtube.com/@coffeewusky?si=12ho4uwh6jBDedhZ", class: "youtube", img: "images/youtube.png" },
-        { name: "Twitch", url: "https://www.twitch.tv/coffeewusky", class: "twitch", img: "images/twitch.png" },
-        { name: "Twitter", url: "https://x.com/coffeewusky", class: "twitter", img: "images/twitter.png" }
+        { name: "YouTube", url: "https://youtube.com/@coffeewusky?si=12ho4uwh6jBDedhZ", class: "youtube", img: "CoffeeWusky-Web/images/youtube.png" },
+        { name: "Twitch", url: "https://www.twitch.tv/coffeewusky", class: "twitch", img: "CoffeeWusky-Web/images/twitch.png" },
+        { name: "Twitter", url: "https://x.com/coffeewusky", class: "twitter", img: "CoffeeWusky-Web/images/twitter.png" },
+        { name: "GitHub", url: "https://github.com/Coffeewusky", class: "github", img: "CoffeeWusky-Web/images/github.png" }
       ];
 
       const socialsContainer = document.getElementById("socials");
@@ -69,11 +73,19 @@
         anchor.target = "_blank";  // Open links in a new tab
 
         const img = document.createElement("img");
-        img.src = social.img;  // Ensure the path is correct
+        img.src = social.img;  // Correct path
         img.alt = social.name;
 
+        const text = document.createElement("span");
+        text.textContent = social.name;
+
+        // If it's GitHub, change the text color to black
+        if (social.class === "github") {
+          text.style.color = "black";
+        }
+
         anchor.appendChild(img);
-        anchor.appendChild(document.createTextNode(social.name));
+        anchor.appendChild(text);
         socialsContainer.appendChild(anchor);
       });
     });

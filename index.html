@@ -89,7 +89,7 @@
       text-decoration: underline;
     }
     .music-attribution {
-      font-size: 1.2em;
+      font-size: 0.8em;  /* Reduced font size */
       margin-top: 20px;
       color: #d0d0d0;
     }
@@ -99,6 +99,9 @@
     }
     .music-attribution a:hover {
       text-decoration: underline;
+    }
+    .audio-player {
+      margin-top: 50px;  /* Added some space before the audio player */
     }
   </style>
 </head>
@@ -123,7 +126,7 @@
 
   <!-- Audio Player for the 'nyc.mp3' song -->
   <div class="audio-player">
-    <audio controls loop autoplay>
+    <audio controls autoplay loop>
       <source src="audio/nyc.mp3" type="audio/mp3">
       Your browser does not support the audio element.
     </audio>
